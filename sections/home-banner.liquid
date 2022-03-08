@@ -1,0 +1,155 @@
+<div class="main-banner">
+    <div class="first-half banner-slider-main">
+        <div class="banner-slider owl-carousel owl-theme">
+            {% for block in section.blocks %}
+                <div class="item slide" style="background-image: url('{{ block.settings.bg_image | img_url : 'master' }}');">
+                    <h5>{{ block.settings.pre_heading }}</h5>
+                    <h2>{{ block.settings.heading }}</h2>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="second-half">
+        <div class="banner-cta-main">
+            <div class="banner-cta-top">
+                <div class="cta-box-1" style="background-image: url('{{ section.settings.bg_img_1 | img_url: 'master'}}');">
+                    <h4>{{ section.settings.heading_1 }}</h4>
+                    <div class="cta-button">
+                        <a href="{{ section.settings.btn_link_1 }}">{{ section.settings.btn_label_1 }}</a>
+                    </div>
+                </div>
+                <div class="cta-box-2" style="background-image: url('{{ section.settings.bg_img_2 | img_url: 'master'}}');">
+                    <h4>{{ section.settings.heading_2 }}</h4>
+                    <div class="cta-button">
+                        <a href="{{ section.settings.btn_link_2 }}">{{ section.settings.btn_label_2 }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-cta-bottom">
+                <div class="cta-box-3" style="background-image: url('{{ section.settings.bg_img_3 | img_url: 'master'}}');">
+                    <h4>{{ section.settings.heading_3 }}</h4>
+                    <span>
+                        {{ section.settings.content }}
+                    </span>
+                    <div class="cta-button">
+                        <a href="{{ section.settings.btn_link_3 }}">{{ section.settings.btn_label_3 }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Homepage Banner",
+  "settings": [
+    {
+        "type":"header",
+        "content":"CTA Section Top left"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label":"Heading"
+    },
+    {
+      "type": "text",
+      "id": "btn_label_1",
+      "label":"Button Label"
+    },
+    { 
+        "type": "url",
+        "id": "btn_link_1",
+        "label":"Button Link"
+      },
+    {
+        "type": "image_picker",
+        "id": "bg_img_1",
+        "label":"Background Image"
+    },
+    {
+        "type":"header",
+        "content":"CTA Section Top right"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label":"Heading"
+    },
+    {
+      "type": "text",
+      "id": "btn_label_2",
+      "label":"Button Label"
+    },
+    {
+        "type": "url",
+        "id": "btn_link_2",
+        "label":"Button Link"
+      },
+    {
+        "type": "image_picker",
+        "id": "bg_img_2",
+        "label":"Background Image"
+      },
+      {
+        "type":"header",
+        "content":"CTA Section bottom"
+    },
+    {
+      "type": "text",
+      "id": "heading_3",
+      "label":"Heading"
+    },
+    {
+        "type": "richtext",
+        "id": "content",
+        "label":"Content"
+      },
+    {
+      "type": "text",
+      "id": "btn_label_3",
+      "label":"Button Label"
+    },
+    {
+        "type": "url",
+        "id": "btn_link_3",
+        "label":"Button Link"
+      },
+    {
+        "type": "image_picker",
+        "id": "bg_img_3",
+        "label":"Background Image"
+      }
+  ],
+  "blocks": [
+  {
+    "type": "Slider",
+    "name": "Slide",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label":"Background Image"
+      },
+      {
+        "type": "text",
+        "id": "pre_heading",
+        "label":"Pre Heading"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label":"Heading"
+      }
+    ]
+  }
+],
+  "presets": [
+  {
+    "name": "Homepage Banner"
+  }
+] 
+}
+{% endschema %}

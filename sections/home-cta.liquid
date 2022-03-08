@@ -1,0 +1,134 @@
+<div class="home-cta-main">
+    <div class="cta-top">
+        <div class="top-cta-first-half" style="background-image: url('{{ section.settings.bg_img_1 | img_url : 'master' }}');">
+            <div class="cta-btn">
+                <a href="{{ section.settings.btn_link_1 }}">{{ section.settings.btn_label_1 }}</a>
+            </div>
+            <div class="cta-content">
+                <h3>{{ section.settings.heading_1 }}</h3>
+                {{ section.settings.content_1 }}
+            </div>
+        </div> 
+        <div class="top-cta-second-half" style="background-image: url('{{ section.settings.bg_img_2 | img_url : 'master' }}');">
+            <div class="cta-btn">
+                <a href="{{ section.settings.btn_link_2 }}">{{ section.settings.btn_label_2 }}</a>
+            </div>
+            <div class="cta-content">
+                <h3>{{ section.settings.heading_2 }}</h3>
+                {{ section.settings.content_2 }}
+            </div>           
+        </div> 
+    </div>
+    <div class="cta-bottom" style="background-image: url('{{ section.settings.bg_img_3 | img_url : 'master' }}');">
+        <div class="cta-content">
+            <h3>{{ section.settings.heading_3 }}</h3>
+            {{ section.settings.content_3 }}
+        </div>
+        <div class="cta-btn">
+            <a href="{{ section.settings.btn_link_3 }}">{{ section.settings.btn_label_3 }}</a>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Home CTA",
+    "settings": [
+    {
+        "type":"header",
+        "content":"CTA Section Top left"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label":"Heading"
+    },
+    {
+        "type": "richtext",
+        "id": "content_1",
+        "label":"Content"
+    },
+    {
+      "type": "text",
+      "id": "btn_label_1",
+      "label":"Button Label"
+    },
+    { 
+        "type": "url",
+        "id": "btn_link_1",
+        "label":"Button Link"
+      },
+    {
+        "type": "image_picker",
+        "id": "bg_img_1",
+        "label":"Background Image"
+    },
+    {
+        "type":"header",
+        "content":"CTA Section Top right"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label":"Heading"
+    },
+    {
+        "type": "richtext",
+        "id": "content_2",
+        "label":"Content"
+    },
+    {
+      "type": "text",
+      "id": "btn_label_2",
+      "label":"Button Label"
+    },
+    {
+        "type": "url",
+        "id": "btn_link_2",
+        "label":"Button Link"
+      },
+    {
+        "type": "image_picker",
+        "id": "bg_img_2",
+        "label":"Background Image"
+      },
+      {
+        "type":"header",
+        "content":"CTA Section bottom"
+    },
+    {
+      "type": "text",
+      "id": "heading_3",
+      "label":"Heading"
+    },
+    {
+        "type": "richtext",
+        "id": "content_3",
+        "label":"Content"
+    },
+    {
+      "type": "text",
+      "id": "btn_label_3",
+      "label":"Button Label"
+    },
+    {
+        "type": "url",
+        "id": "btn_link_3",
+        "label":"Button Link"
+      },
+    {
+        "type": "image_picker",
+        "id": "bg_img_3",
+        "label":"Background Image"
+      }
+    ],
+    "blocks": [
+      
+  ],
+    "presets": [
+    {
+      "name": "Home CTA"
+    }
+  ] 
+  }
+{% endschema %}

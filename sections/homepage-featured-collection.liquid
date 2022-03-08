@@ -1,0 +1,50 @@
+<h2>{{ section.settings.heading }}</h2>
+
+{%- for product in section.settings.collection.products -%}
+<div class="featured-card">
+    <img src="{{ product.featured_image | img_url: 'master'}}" alt="">
+    <h4>{{ product.title }}</h4>
+    {{ product.price | money_with_currency }}
+
+    <div class="card-hover">
+        <div class="card-atc-button">
+            <form action="/cart/add" method="post">
+            {% if product.variants.size == 1 %}
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            {% else %}
+            <select name="id">{% for variant in product.variants %}<option value="{{ variant.id }}">{{ variant.title }}</option>{% endfor %}</select>
+            {% endif %}
+            <div><button type="submit" name="add">Add to cart</button></div>  
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endfor %}    
+
+
+{% schema %}
+{
+  "name": "Home Featured Collection",
+  "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "label":"Section Title"
+    },
+    {
+        "type": "collection",
+        "id": "collection",
+        "label":"Select Collection"
+      }
+  ],
+  "blocks": [
+    
+],
+  "presets": [
+  {
+    "name": "Home Featured collection"
+  }
+] 
+}
+{% endschema %}

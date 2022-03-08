@@ -28,6 +28,9 @@
       assign ratio = 1
     endif
   -%}
+  <div class="quick-view-button"><a class="quick-view" data-handle="{{ product.handle }}">Quick View</a></div>
+
+  
   <div class="card-wrapper underline-links-hover">
     <div class="card
       card--{{ settings.card_style }}
@@ -37,6 +40,7 @@
       {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}"
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
+
       <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
         {%- if card_product.featured_media -%}
           <div class="card__media">
@@ -134,6 +138,7 @@
             {%- endif -%}
 
             {% render 'price', product: card_product, price_class: '' %}
+
           </div>
         </div>
         <div class="card__badge {{ settings.badge_position }}">
@@ -180,9 +185,17 @@
               <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
             {%- endif -%}
             {% render 'price' %}
+           
           </div>
         </div>
       </div>
     </div>
   </div>
 {%- endif -%}
+
+
+
+<script>
+  {% capture content %}{% include 'quickview' %}{% endcapture %}
+        var content = {{ content | json }};
+  </script>

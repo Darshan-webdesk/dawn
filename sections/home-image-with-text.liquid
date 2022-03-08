@@ -1,0 +1,53 @@
+<div class="main-image-text" style="background-image: url('{{ section.settings.bg_image | img_url : 'master' }}');">
+    <div class="iwt-content">
+        <h2>{{ section.settings.heading }}</h2>
+        <div class="iwt-btn">
+            <a href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>
+        </div>
+    </div>
+    <div class="iwt-image">
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="">
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Home Image with text",
+    "settings": [
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label":"Heading"
+    },
+    {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label":"Background Image"
+    },
+      {
+        "type": "text",
+        "id": "btn_label",
+        "label":"Button Label"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label":"Button Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label":"Image"
+    }
+    ],  
+    "blocks": [
+      
+  ],
+    "presets": [
+    {
+      "name": "Home Image with text"
+    }
+  ] 
+  }
+{% endschema %}
