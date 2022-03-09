@@ -1,0 +1,51 @@
+<div class="main-trust-bar">
+{% for block in section.blocks %}
+    <div class="trut-badge">
+        <img src="{{ block.settings.image | img_url : 'master' }}" alt="">
+     <div class="content">
+         <h3>{{ block.settings.heading }}</h3>
+         <span>{{ block.settings.sub_heading }}</span>
+     </div>   
+    </div>
+{% endfor %}
+</div>
+
+
+{% schema %}
+{
+    "name": "Home Trust Bar",
+    "settings": [
+
+    ],  
+    "blocks": [ 
+    {
+      "type": "select",
+      "name": "Badge",
+      "settings": [
+       
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label":"Image"
+        },
+        {
+          "type": "text",
+          "id": "heading", 
+          "label":"Title"
+        },
+        {
+          "type": "text",
+          "id": "sub_heading",
+          "label":"Sub Title"
+        }
+      ]
+    }
+      
+  ],
+    "presets": [
+    {
+      "name": "Home Trust Bar"
+    }
+  ] 
+  }
+{% endschema %}  

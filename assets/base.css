@@ -2867,3 +2867,48 @@ details-disclosure > details {
 
 
 
+
+.prodNav {
+  font-size: 12px;
+  background: #f5f5f5;
+  border-radius: 20px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 50px 0 20px;
+  line-height: 1.1;
+}
+.prodNav .ptItem {
+  padding: 9px 35px;
+  line-height: 20px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.3s ease-in-out;
+}
+
+.prodNav .ptItem.active,
+.prodNav .ptItem:hover {
+  background: #5e5757;
+  border-color: #5e5757;
+  
+}
+
+.prodBody {
+
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.prodMain {
+  display: none;
+  padding: 20px;
+
+}
+
+.prodMain.active {
+  display: block;
+}

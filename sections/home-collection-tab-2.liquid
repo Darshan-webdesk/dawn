@@ -1,0 +1,101 @@
+<div class="main-home-collection-tab">
+
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="container">
+        <ul class="prodNav prodNav_ts">
+            {% for block in section.blocks %}
+          <li id="pTab{{ forloop.index }}" class="ptItem_ts ptItem{% if forloop.index ==  1%}active{% endif %}">{{ block.settings.collection.title }}</li>
+          {% endfor %}
+        </ul>
+      
+        <div class="prodBody">
+
+         {% for block in section.blocks %}   
+          <div class="prodMain prodMain_ts {% if forloop.index == 1 %} active{% endif %}" id="pTab{{ forloop.index }}C_ts">
+
+            <div class="tab-banner" style="background-image:url('{{ block.settings.bg_image | img_url : 'master'  }}')">
+                <div class="tab-btn">
+                    <a href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>
+                </div>
+                <h2>{{ block.settings.heading }}</h2>
+                <span>{{ block.settings.sub_heading }}</span>
+            </div>
+
+            {% for product in block.settings.collection.products limit: 4 %} 
+                <div class="tab-prouct-card">
+                    <img src="{{ product.featured_image | img_url : 'master' }}" alt="">
+                        <h4>{{ product.title }}</h4>
+                        <span>{{ product.price }}</span>
+                </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+</div>
+
+{% schema %}
+{
+    "name": "Home Collection Tab",
+    "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label":"Heading"
+    }
+    ],  
+    "blocks": [ 
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+         {
+            "type": "header",
+            "content":"CTA Section"
+        },
+        {
+            "type": "image_picker",
+            "id": "bg_image",
+            "label":"Background Image"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label":"heading"
+        },
+        {
+            "type": "text",
+            "id": "sub_heading",
+            "label":"Sub heading"
+        },
+        {
+            "type": "text",
+            "id": "btn_label",
+            "label":"Button Label"
+        },
+        {
+            "type": "url",
+            "id": "btn_link",
+            "label":"Button Link"
+        },
+        {
+            "type": "header",
+            "content":"Collection"
+        },
+        {
+            "type": "collection",
+            "id": "collection",
+            "label":"Select Collection"
+        }
+      ]
+    }
+      
+  ],
+    "presets": [
+    {
+      "name": "Home Collection Tab"
+    }
+  ] 
+  }
+{% endschema %}

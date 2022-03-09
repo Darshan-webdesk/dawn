@@ -1,8 +1,45 @@
+<div class="main-cta-review">
+  <div class="main-review owl-carousel owl-theme">
+    {% for block in section.blocks %}
+    <div class="item review-card" style="background-image: url('{{ block.settings.bg_image | img_url: 'master' }}');">
+        <div class="review-btn">
+          <a href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>
+        </div>
+        {% if block.settings.content != blank %}
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        {% endif %}    
+          <p>
+            {{ block.settings.content }}
+          </p>
+          <span>-{{ block.settings.author }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="main-cta" style="background-image: url('{{ section.settings.image | img_url : 'master' }}');">
+      <div class="review-btn">
+        <a href="{{ section.settings.btn_link }}">{{ sction.settings.btn_label }}</a>
+      </div>
+      <div class="review-content">
+        <h3>{{ section.settings.heading }}</h3>
+        {{ section.settings.content }}
+      </div>
+  </div>
+</div>
+
+
 {% schema %}
 {
-    "name": "Home Image with text",
+    "name": "Home CTA with review",
     "settings": [
-
+    {
+      "type":"header",
+      "content":"CTA Section"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -29,12 +66,43 @@
         "label":"Image"
     }
     ],  
-    "blocks": [
+    "blocks": [ 
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label":"Content"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label":"author"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label":"Background Image"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label":"Button Label"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label":"Button Link"
+        }
+      ]
+    }
       
   ],
     "presets": [
     {
-      "name": "Home Image with text"
+      "name": "Home CTA with review"
     }
   ] 
   }
