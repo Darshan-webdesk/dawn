@@ -36,6 +36,24 @@
   }
 {%- endstyle -%}
 
+
+
+
+<div class="main-trust-bar">
+  {% for block in section.blocks %}
+  {%- case block.type -%}
+         {%- when 'trustbar' -%}
+      <div class="trut-badge">
+          <img src="{{ block.settings.image | img_url : 'master' }}" alt="">
+       <div class="content">
+           <h3>{{ block.settings.heading }}</h3>
+           <span>{{ block.settings.sub_heading }}</span>
+       </div>   
+      </div>
+      {% endcase %}
+  {% endfor %}
+  </div>
+
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
 
 
@@ -505,6 +523,28 @@
         "id":"email",
         "label":"Email"
       }
+      ]
+    },
+    {
+      "type": "trustbar",
+      "name": "Badge",
+      "settings": [
+       
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label":"Image"
+        },
+        {
+          "type": "text",
+          "id": "heading", 
+          "label":"Title"
+        },
+        {
+          "type": "text",
+          "id": "sub_heading",
+          "label":"Sub Title"
+        }
       ]
     }
   ],

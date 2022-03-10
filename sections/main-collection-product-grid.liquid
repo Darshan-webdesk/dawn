@@ -65,6 +65,17 @@
                   show_rating: section.settings.show_rating,
                   lazy_load: lazy_load
                 %}
+
+                  <form action="/cart/add" method="post">
+                  {% if product.variants.size == 1 %}
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                  {% else %}
+                  <select name="id">{% for variant in product.variants %}<option value="{{ variant.id }}">{{ variant.title }}</option>{% endfor %}</select>
+                  {% endif %}
+                  <div><button type="submit" name="add">Add to cart</button></div>  
+                  </form>
+
+                  <div class="quick-view-button"><a class="quick-view" data-handle="{{ product.handle }}" href="javascript:void(0);">Quick View</a></div>
               </li>
             {%- endfor -%}
           </ul>
@@ -86,9 +97,9 @@
     {
       "type": "range",
       "id": "products_per_page",
-      "min": 8,
+      "min": 2,
       "max": 24,
-      "step": 4,
+      "step": 2,
       "default": 16,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },

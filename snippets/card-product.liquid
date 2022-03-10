@@ -28,9 +28,8 @@
       assign ratio = 1
     endif
   -%}
-  <div class="quick-view-button"><a class="quick-view" data-handle="{{ product.handle }}">Quick View</a></div>
 
-  
+
   <div class="card-wrapper underline-links-hover">
     <div class="card
       card--{{ settings.card_style }}
@@ -149,8 +148,14 @@
           {%- endif -%}
         </div>
       </div>
+  
     </div>
+ 
   </div>
+
+  
+
+
 {%- else -%}
   <div class="card-wrapper underline-links-hover">
     <div class="card
@@ -191,11 +196,5 @@
       </div>
     </div>
   </div>
+
 {%- endif -%}
-
-
-
-<script>
-  {% capture content %}{% include 'quickview' %}{% endcapture %}
-        var content = {{ content | json }};
-  </script>
