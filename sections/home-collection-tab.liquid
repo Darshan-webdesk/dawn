@@ -5,7 +5,7 @@
     <div class="container">
         <ul class="prodNav">
             {% for block in section.blocks %}
-          <li id="pTab{{ forloop.index }}" class="ptItem {% if forloop.index ==  1%}active{% endif %}">{{ block.settings.collection.title }}</li>
+          <li id="pTab{{ forloop.index }}" class="ptItem {% if forloop.index ==  1%}active{% endif %}">{% if block.settings.tab_title != blank %} {{ block.settings.tab_title }} {% else %} {{ block.settings.collection.title }}{% endif %}</li>
           {% endfor %}
         </ul>
       
@@ -48,7 +48,7 @@
     "blocks": [ 
     {
       "type": "review",
-      "name": "Review",
+      "name": "collection",
       "settings": [
          {
             "type": "header",
@@ -58,6 +58,11 @@
             "type": "image_picker",
             "id": "bg_image",
             "label":"Background Image"
+        },
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label":"Tab Title"
         },
         {
             "type": "text",

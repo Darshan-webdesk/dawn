@@ -2878,6 +2878,7 @@ details-disclosure > details {
   margin: 50px 0 20px;
   line-height: 1.1;
 }
+.prodNav .ptItem_ts,
 .prodNav .ptItem {
   padding: 9px 35px;
   line-height: 20px;
@@ -2890,6 +2891,7 @@ details-disclosure > details {
   transition: all 0.3s ease-in-out;
 }
 
+.prodNav .ptItem_ts.active,
 .prodNav .ptItem.active,
 .prodNav .ptItem:hover {
   background: #5e5757;

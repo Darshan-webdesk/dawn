@@ -73,7 +73,7 @@ $(document).ready(function () {
 
 
   $(document).ready(function () {
-    var pTabItem_ts = $(".prodNav_ts .ptItem");
+    var pTabItem_ts = $(".prodNav_ts .ptItem_ts");
     $(pTabItem_ts).click(function () {
       // Tab nav active functionality
       $(pTabItem_ts).removeClass("active");
@@ -82,7 +82,7 @@ $(document).ready(function () {
       // Tab container active functionality
       var tabid_ts = $(this).attr("id");
       $(".prodMain_ts").removeClass("active");
-      $("#" + tabid_ts + "C").addClass("active");
+      $("#" + tabid_ts + "C_ts").addClass("active");
   
       return false;
     });
