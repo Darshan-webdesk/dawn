@@ -19,6 +19,35 @@
     }
   }
 {%- endstyle -%}
+{% assign ids = product.metafields.my_fields.related_products | split: ","  %}
+
+{% if ids != blank %}
+
+<h2 class="product-recommendations__heading {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding isolate" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
+    <ul class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down" role="list">
+{% for product in collections.all.products %} 
+    {% for id in ids %}
+ {% if id contains product.id %}
+      <li class="grid__item">
+          {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating
+        %}
+     </li>
+      {% endif %}  
+      
+    {% endfor %}
+{% endfor %}
+</ul>   
+</product-recommendations>
+</div>
+{% else %}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding isolate" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
@@ -40,6 +69,8 @@
     {% endif %}
   </product-recommendations>
 </div>
+
+{% endif %}
 
 {% javascript %}
   class ProductRecommendations extends HTMLElement {
