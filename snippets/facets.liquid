@@ -102,15 +102,7 @@ label img {
 
   </ul>
 
-  <div class="sort-per-page">
-    <label for="sel1">Show per page:</label>
-    <select id="sel1" class="num">
-    <option value="/collections/{{ collection.handle }}?view=4" {% if limit == 4 %}selected="selected"{% endif %}>4</option>
-    <option value="/collections/{{ collection.handle }}?view=12" {% if limit == 12 %}selected="selected"{% endif %}>12</option>
-    <option value="/collections/{{ collection.handle }}?view=24" {% if limit == 24 %}selected="selected"{% endif %}>24</option>
-    <option value="/collections/{{ collection.handle }}?view=36" {% if limit == 36 %}selected="selected"{% endif %}>36</option>
-    </select>
-   </div>
+
 
 
   {%- unless collapse_on_larger_devices -%}

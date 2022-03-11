@@ -28,11 +28,35 @@
   
     <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
       {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+    
+      
+    
     </div>
   {%- endif -%}
-  
+    
   <div id="ProductGridContainer">
-    {%- paginate collection.products by section.settings.products_per_page -%}
+    
+    {% javascript %}
+    /* Bind a change event to the dropdown */
+    $('#paginateBy').on('change', function(){
+    /* Get the current value. Some value validation could be added here (but we don't) */
+    var val = $(this).val();
+    /* Send the value as a cart attribute via the AJAX API */
+    $.ajax({
+    type: "POST",
+    url: '/cart.js',
+    data: {"attributes[pagination]": val}, /* We are using an attribute named "pagination" */
+    success: function(d){
+    window.location.reload();
+    },
+    dataType: 'json'
+    });
+    });
+    {% endjavascript %}
+
+    <select name="paginateBy" id="paginateBy" class="collection-sort__input"> {% for i in (1..15) %} {% assign v = i | append:'' %} <option value="{{ v }}"{% if cart.attributes.pagination != blank and cart.attributes.pagination %}{% if cart.attributes.pagination == v %} selected{% endif %}{% else %}{% if i == 15 %} selected{% endif %}{% endif %}>{{ i }} per page </option> {% endfor %} </select>
+
+    {%- paginate collection.products by cart.attributes.pagination -%}
       {%- if collection.products.size == 0 -%}
         <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
           <div class="loading-overlay gradient"></div>

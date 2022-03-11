@@ -112,18 +112,6 @@ $("#myCheckbox1").change(function() {
     }
 });
 
-
-// view product 
-
-$(document).ready(function(){
-  jQuery('.sort-per-page select.num').on('change', function(){
-    window.location.replace(jQuery(this).val());
-  });
-});
-
-
-
-
 //Quick View
 
 $(document).ready(function () {
