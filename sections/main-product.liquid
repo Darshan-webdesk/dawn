@@ -219,12 +219,7 @@
                 {{ form | payment_terms }}
               {%- endform -%}
             </div>
-          {%- when 'description' -%}
-            {%- if product.description != blank -%}
-              <div class="product__description rte">
-                {{ product.description }}
-              </div>
-            {%- endif -%}
+
           {%- when 'custom_liquid' -%}
             {{ block.settings.custom_liquid }}
           {%- when 'collapsible_tab' -%}
@@ -522,7 +517,22 @@
       </div>
     </modal-dialog>
   {%- endfor -%}
+
+
+ 
+
+  {% assign description = product.description | replace: '<h2', '</div><div class="tab-content"><h2' %}
+    <div class="prod_description">
+    <div class="spacer">
+    {{ description }}
+    </div>
+    </div>
 </section>
+
+
+
+
+
 
 {% javascript %}
   class ProductModal extends ModalDialog {

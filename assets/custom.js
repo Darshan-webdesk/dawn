@@ -288,3 +288,23 @@ $(document).ready(function () {
       $('.qv-product-images').slick('setPosition');
     }
   });
+
+
+
+  // description tab 
+
+
+  $(document).ready(function(){
+  	var tabTitle = '<ul>';
+  $('.prod_description > div.tab-content').each(function(i, item){
+      $(this).attr('id', "tabs-" + i);
+      var titletext = $(this).find('h2').text();
+      var titlelist = '<li><a href="#tabs-' + i + '">' + titletext + '</a></li>'
+      tabTitle += titlelist ;
+  });   
+  tabTitle += '</ul>';
+  $( tabTitle ).insertAfter('.spacer');
+    $('.spacer').remove();
+  $( ".prod_description" ).tabs();
+  })
+    
